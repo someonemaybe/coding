@@ -16,7 +16,7 @@
   for(i=n-1;i>0;i--)
     for(j=0;j<n-i;j++)
         if(num[j]>num[j+1])
-        swap(num[j],num[j+1]);
+        Swap(num[j],num[j+1]);
 
 */
 void BubbleSort(int[] arr, int arrSize)
@@ -26,7 +26,7 @@ void BubbleSort(int[] arr, int arrSize)
             // 内层循环，找出前面无序值中最大的一个，放到最后，成为有序的一部分
             for (int in = 0; in < out; in++) {
                     if (arr[in] > arr[in + 1]) {
-                            swap(arr, in, in + 1);
+                            Swap(arr, in, in + 1);
                         }
                 }
         }
@@ -66,12 +66,12 @@ int partition(int[] arr, int left, int right)
             j--;
         }
         if (i < j) {
-            swap(&arr[i++], &arr[j--]);
+            Swap(&arr[i++], &arr[j--]);
         } else {
             i++;
         }
     }
-    swap(&arr[j], &arr[left]);
+    Swap(&arr[j], &arr[left]);
     return j;
 }
 
