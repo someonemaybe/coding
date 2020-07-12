@@ -21,9 +21,9 @@
 */
 void BubbleSort(int[] arr, int arrSize)
 {
-    // 外层循环，保证后半部分的值是从小到大有序的
+    // 外层循环，保证后半部分的值是从小到大有序的（外层循环是由大变小）
     for (int out = arrSize - 1; out > 0; out--) {
-            // 内层循环，找出前面无序值中最大的一个，放到最后，成为有序的一部分
+            // 内层循环，找出前面无序值中最大的一个，放到最后，成为有序的一部分（内层循环是由小变大）
             for (int in = 0; in < out; in++) {
                     if (arr[in] > arr[in + 1]) {
                             Swap(arr, in, in + 1);
@@ -70,7 +70,7 @@ int partition(int[] arr, int left, int right)
         if (i < j) {
             Swap(&arr[i++], &arr[j--]); // 交换后游标移动
         } else {
-            i++;
+            i++; // 这个地方i++后，j的位置是目标位置
         }
     }
     Swap(&arr[j], &arr[left]);
