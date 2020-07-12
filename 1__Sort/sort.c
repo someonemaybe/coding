@@ -51,7 +51,9 @@ void qsort(void *base, int num, int width, int(*sortFun)(const void*, const void
 各参数：1 待排序数组首地址；2 数组中元素个数；3 各元素占用空间；4 指向排序函数的指针
 */
 
-// 找基准元素的正确位置（partition）
+// partition
+// 找基准元素的正确位置j，并把基准元素放到该位置
+// 该位置左边全为比他小的数，该位置右边全为比他大的数
 int partition(int[] arr, int left, int right)
 {
     int i = left + 1;
@@ -66,7 +68,7 @@ int partition(int[] arr, int left, int right)
             j--;
         }
         if (i < j) {
-            Swap(&arr[i++], &arr[j--]);
+            Swap(&arr[i++], &arr[j--]); // 交换后游标移动
         } else {
             i++;
         }
@@ -75,16 +77,15 @@ int partition(int[] arr, int left, int right)
     return j;
 }
 
-void QuickSort(int[] arr, int arrSize)
+void QuickSort(int[] arr, int left, int right)
 {
-    int left = 0;
-    int right = arrSize - 1;
+    int j;
 
-    if (arrSize <= 0) {
+    if (left > right) {
         return;
     }
 
-    int j = partition(arr, left, right);
+    j = partition(arr, left, right);
     QuickSort(arr, left, j - 1);
     QuickSort(arr, j + 1, right);
 
